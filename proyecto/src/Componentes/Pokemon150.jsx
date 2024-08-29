@@ -5,16 +5,17 @@ export const Pokemon150 = () => {
  
  const [pokemon, setpokemon]=useState([])
 
- const [list, setlist]=useState("https://pokeapi.co/api/v2/pokemon?limit=50&offset=0")
-
+ const [list, setlist]=useState("https://pokeapi.co/api/v2/pokemon?limit=30&offset=0")
+const [next,setnext]=useState("")
 function incrementar() { 
-    setlist({data21 .next})
+    setlist(next)
 }
     useEffect(() => {
         
-        fetch(`https://pokeapi.co/api/v2/pokemon?${list}`)
+        fetch(list)
           .then((res) => res.json()) // Convierte  la respuesta a JSON no olvidar los () para la funcion json()
           .then((data) => {
+            setnext(data.next)
             const fetchPokemonDetails = data.results.map((pokemon) =>
           fetch(pokemon.url).then((res) => res.json())
           
@@ -28,24 +29,23 @@ function incrementar() {
             .catch((error) => {
                 console.error('Error al obtener los datos del Pokémon:', error);
               });
-      }, []);
+      }, [list]);
  
  
  
  
  
     return (
-        <div>
-            <button onClick={incrementar} ></button>
+        <div className="pokemon">
+       
        {pokemon.map((poke, index) =>( 
-       <div key={index}>
-            <h1>{poke.name}</h1>
+       <div className='card' key={index}>
             <img src={poke.sprites.front_default} alt="" />
-             
+            <h3>{poke.name}</h3>
          </div>    
        ))
        }
-
+     <button onClick={incrementar} >Proximos</button>
         </div>
       
             
