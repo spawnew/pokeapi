@@ -7,15 +7,21 @@ export const Pokemon150 = () => {
 
  const [list, setlist]=useState("https://pokeapi.co/api/v2/pokemon?limit=30&offset=0")
 const [next,setnext]=useState("")
+const [previous,setprevious]=useState("")
 function incrementar() { 
     setlist(next)
 }
+function decrementar() { 
+    setlist(previous)
+}
+
     useEffect(() => {
         
         fetch(list)
           .then((res) => res.json()) // Convierte  la respuesta a JSON no olvidar los () para la funcion json()
           .then((data) => {
             setnext(data.next)
+            setprevious(data.previous)
             const fetchPokemonDetails = data.results.map((pokemon) =>
           fetch(pokemon.url).then((res) => res.json())
           
@@ -46,6 +52,7 @@ function incrementar() {
        ))
        }
      <button onClick={incrementar} >Proximos</button>
+     <button onClick={decrementar} >anteriores</button>
         </div>
       
             
