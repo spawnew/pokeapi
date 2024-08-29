@@ -1,9 +1,9 @@
 import './App.css';
-import Pokemon from './Componentes/Pokemon'
+import Pokemon150 from './Componentes/Pokemon150'
 function App() {
   return (
     <div >
-      <Pokemon/>
+      <Pokemon150/>
      
     </div>
   );
