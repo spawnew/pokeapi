@@ -1,5 +1,14 @@
-
-
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  text-align: center;
+  background-image:url(https://i.pinimg.com/736x/e3/03/5c/e3035c16d771a0f0822cac63901483a2.jpg)  ;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:cover;
+}
 ul{
   display:flex;
   list-style: none;
