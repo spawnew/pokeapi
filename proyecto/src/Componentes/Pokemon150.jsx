@@ -12,6 +12,7 @@ export const Pokemon150 = () => {
 const [next,setnext]=useState("")
 const [previous,setprevious]=useState("")
 const [todo,settodo]=useState("https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0")
+const [selectedPokemon, setSelectedPokemon] = useState(null);
 function incrementar() { 
     setlist(next)
 }
@@ -22,7 +23,9 @@ function mostrarTodos() {
     setlist(todo)
 }
 
-
+const handleCardClick = (poke) => {
+    setSelectedPokemon(poke); 
+  };
 
     useEffect(() => {
         
@@ -36,7 +39,7 @@ function mostrarTodos() {
           
         );
 
-        // Esperamos a que todas las solicitudes se completen
+        
         Promise.all(fetchPokemonDetails).then((pokemonDetails) => {
           setpokemon(pokemonDetails);
         });
@@ -51,10 +54,10 @@ function mostrarTodos() {
     
  
     return (
+
     
         <div className="pokemon">
-            
-         <div className='buton'>
+                     <div className='buton'>
          <button onClick={incrementar}><p>Proximos</p></button>
      <button onClick={decrementar} ><p>Anteriores</p></button>
      <button onClick={mostrarTodos} ><p>Todos</p></button>
@@ -63,26 +66,32 @@ function mostrarTodos() {
 
      
      </div>
-     
-      
+            {selectedPokemon && (
+        <div className="card">
+          <h2>{selectedPokemon.name}</h2>
+          <img src={selectedPokemon.sprites.front_default} alt={selectedPokemon.name} />
+          <p><strong>Altura:</strong> {selectedPokemon.height}</p>
+          <p><strong>Peso:</strong> {selectedPokemon.weight}</p>
+          <p><strong>Ataques:</strong> {selectedPokemon.abilities.map(ability => ability.ability.name).join(', ')}</p>
+         
+        </div>
+      )}
+            
 
-       
+     
        {pokemon.map((poke, index) =>( 
        
-       <div className='card' key={index}>
+       <div className='card' key={index} onClick={() => handleCardClick(poke)}>
             <img src={poke.sprites.front_default} alt="" />
-            <h3>{poke.name}</h3>
+            <h3><strong>{poke.name}</strong></h3>
             
-         </div>    
-       ))
-       }
-     
+         </div>
+             ))}
+                 
     
-                   
-       </div>   
-    )};
-        
-      
+    </div>
+  );
+}
    
   
 export default Pokemon150;
