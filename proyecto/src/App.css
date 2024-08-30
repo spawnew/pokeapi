@@ -2,59 +2,91 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 90vh;
-  text-align: center;
-  background-image:url(https://i.pinimg.com/736x/e3/03/5c/e3035c16d771a0f0822cac63901483a2.jpg)  ;
+  min-height: 100vh; /* Asegura que el contenido ocupe al menos toda la altura de la ventana */
+  margin: 0;
+  background-image: url(https://i.pinimg.com/736x/e3/03/5c/e3035c16d771a0f0822cac63901483a2.jpg);
   background-repeat: no-repeat;
   background-position: center;
-  background-size:cover;
+  background-size: cover;
+  font-family: 'Arial', sans-serif; /* Fuente general para todo el documento */
+  color: #333; /* Color de texto por defecto */
 }
-ul{
-  display:flex;
+
+/* Estilo para la lista de Pokémon */
+ul {
+  display: flex;
+  flex-wrap: wrap;
   list-style: none;
-  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  flex-direction: row; /* Se ajusta para mostrar los elementos en fila */
+}
+
+/* Contenedor principal */
+.principal {
+  display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
-.principal{
-  display: flex;
-  flex-direction:row;
- 
 
-
-}
-.pokemon{
+/* Contenedor de los Pokémon */
+.pokemon {
   display: flex;
   flex-wrap: wrap;
-  justify-content:space-between;
+  justify-content: center;
   align-items: center;
-  flex-direction:row;
+  gap: 1rem; /* Espacio entre tarjetas */
   padding: 20px;
 }
 
-.card{
-  width:6rem;
+/* Estilo para cada tarjeta de Pokémon */
+.card {
+  width: 150px;
+  padding: 1rem;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s, background-image 0.3s;
+  background-image: url(https://images.wikidexcdn.net/mwuploads/wikidex/thumb/9/90/latest/20200110034558/Artwork_de_la_Isla_de_la_Armadura.png/1200px-Artwork_de_la_Isla_de_la_Armadura.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: #333;
+}
+
+.card:hover {
+  transform: scale(1.05); 
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRO2AG5fBYFkeHtzzQudSJy-WCgKVu_tYu0uQ&s);
+  color: #ffffff;
+  border: solid 2px #f5f5f5;
+}
+
+
+.titulo img {
+  width: 100%; 
+  max-width: 30rem; 
+  display: block;
+  margin: 0 auto;
+}
+
+
+button {
+  width: 5rem;
+  height: 2.5rem;
   box-sizing: border-box;
-  background-color: #e8eef0;
+  background-color: #f31010;
   border-radius: 20px;
   border: solid 0.5px black;
-  background-image:url(https://images.wikidexcdn.net/mwuploads/wikidex/thumb/9/90/latest/20200110034558/Artwork_de_la_Isla_de_la_Armadura.png/1200px-Artwork_de_la_Isla_de_la_Armadura.png)  ;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size:cover;
+  cursor: pointer;
+display: flex;
+color: rgb(238, 232, 232);
+
+
 }
 
-
-.fondo{
-  background-image:image
-}
-
-.card:hover{
-  background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRO2AG5fBYFkeHtzzQudSJy-WCgKVu_tYu0uQ&s)  ;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size:cover;
-  color:aliceblue;
-  border: solid 2px beige;
-
-
+button:hover {
+  background-color: #d4e0e6;
+  transform: scale(1.05);
 }
