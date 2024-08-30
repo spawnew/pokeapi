@@ -67,7 +67,7 @@ const handleCardClick = (poke) => {
      
      </div>
             {selectedPokemon && (
-        <div className="card">
+        <div className="card1">
           <h2>{selectedPokemon.name}</h2>
           <img src={selectedPokemon.sprites.front_default} alt={selectedPokemon.name} />
           <p><strong>Altura:</strong> {selectedPokemon.height}</p>
